@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>超ボーマス62 参展社团信息</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Noto Sans JP', 'Noto Sans SC', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            color: white;
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        header .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+        
+        .stat-item {
+            background: rgba(255,255,255,0.2);
+            padding: 20px 40px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .filters {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+        
+        .filter-row {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        
+        .filter-row input, .filter-row select {
+            padding: 10px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+        
+        .filter-row input:focus, .filter-row select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .filter-row input[type="text"] {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .circles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 25px;
+        }
+        
+        .circle-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .circle-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+        
+        .card-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .author-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 3px solid white;
+            object-fit: cover;
+            background: #f0f0f0;
+        }
+        
+        .author-avatar-placeholder {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 3px solid white;
+            background: rgba(255,255,255,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 700;
+        }
+        
+        .author-info {
+            flex: 1;
+        }
+        
+        .author-info a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        .circle-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 3px;
+        }
+        
+        .author-handle {
+            opacity: 0.9;
+            font-size: 0.9rem;
+        }
+        
+        .circle-booth {
+            display: inline-block;
+            background: rgba(255,255,255,0.3);
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            margin-top: 8px;
+        }
+        
+        .card-body {
+            padding: 20px;
+        }
+        
+        /* 主体推文样式 */
+        .main-tweet {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .main-tweet-text {
+            font-size: 14px;
+            line-height: 1.6;
+            white-space: pre-wrap;
+            margin-bottom: 12px;
+        }
+        
+        .main-tweet-media {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 8px;
+            margin-top: 10px;
+        }
+        
+        .main-tweet-media .media-item {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            aspect-ratio: 1;
+            cursor: pointer;
+            background: #f0f0f0;
+        }
+        
+        .main-tweet-media .media-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+        
+        .main-tweet-media .media-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        .main-tweet-media .media-item.video::after {
+            content: '▶';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0,0,0,0.7);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+        }
+        
+        /* 试听视频区域 */
+        .preview-video-section {
+            position: relative;
+            border-radius: 14px;
+            margin-top: 18px;
+            margin-bottom: 15px;
+            overflow: hidden;
+            background: #0d1117;
+            min-height: 90px;
+        }
+
+        .preview-video-bg {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            filter: blur(12px) brightness(0.45);
+            transform: scale(1.08);
+            transition: filter 0.4s;
+        }
+
+        .preview-video-section:hover .preview-video-bg {
+            filter: blur(10px) brightness(0.55);
+        }
+
+        .preview-video-inner {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 14px 18px;
+        }
+
+        .preview-video-play {
+            flex-shrink: 0;
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.18);
+            border: 2px solid rgba(255,255,255,0.55);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: #fff;
+            line-height: 1;
+            padding-left: 2px;
+            transition: background 0.25s, transform 0.2s, border-color 0.25s;
+            backdrop-filter: blur(4px);
+        }
+
+        .preview-video-section:hover .preview-video-play {
+            background: rgba(255,255,255,0.28);
+            border-color: #fff;
+            transform: scale(1.1);
+        }
+
+        .preview-video-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .preview-video-label {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.6);
+            margin-bottom: 3px;
+        }
+
+        .preview-video-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: #fff;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .preview-video-link {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .preview-video-link:hover {
+            text-decoration: none;
+        }
+        
+        /* 更多推文折叠区域 */
+        .more-tweets-section {
+            border-top: 1px dashed #ddd;
+            margin-top: 15px;
+            padding-top: 15px;
+        }
+        
+        .more-tweets-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            padding: 12px;
+            background: #f5f5f5;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            color: #666;
+            transition: background 0.3s;
+        }
+        
+        .more-tweets-toggle:hover {
+            background: #eeeeee;
+        }
+        
+        .more-tweets-toggle .arrow {
+            transition: transform 0.3s;
+        }
+        
+        .more-tweets-toggle.expanded .arrow {
+            transform: rotate(180deg);
+        }
+        
+        .more-tweets-content {
+            display: none;
+            margin-top: 15px;
+        }
+        
+        .more-tweets-content.expanded {
+            display: block;
+        }
+        
+        .additional-tweet {
+            background: #fafafa;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            border-left: 3px solid #ddd;
+        }
+        
+        .additional-tweet-date {
+            font-size: 0.8rem;
+            color: #999;
+            margin-bottom: 5px;
+        }
+        
+        .additional-tweet-text {
+            font-size: 13px;
+            line-height: 1.5;
+            white-space: pre-wrap;
+            margin-bottom: 8px;
+        }
+        
+        .additional-tweet-media {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        
+        .additional-tweet-media img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        
+        /* 翻译区域样式 */
+        .translation-box {
+            margin-top: 15px;
+            padding: 15px;
+            background: linear-gradient(135deg, #e3f2fd 0%, #f3e5f5 100%);
+            border-radius: 12px;
+            border-left: 4px solid #667eea;
+            display: none;
+        }
+        
+        .translation-header {
+            font-weight: 600;
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .translation-content {
+            color: #333;
+            line-height: 1.8;
+            font-size: 0.95rem;
+            white-space: pre-line;
+        }
+        
+        .translation-content br {
+            display: block;
+            margin: 5px 0;
+        }
+        
+        .translate-btn {
+            margin-top: 10px;
+            padding: 6px 12px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: opacity 0.3s;
+        }
+        
+        .translate-btn:hover {
+            opacity: 0.9;
+        }
+        
+        .card-footer {
+            padding: 15px 20px;
+            background: #f8f9fa;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid #e0e0e0;
+        }
+        
+        .x-link {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: color 0.3s;
+        }
+        
+        .x-link:hover {
+            color: #764ba2;
+            text-decoration: underline;
+        }
+        
+        .tweet-date {
+            color: #666;
+            font-size: 0.85rem;
+        }
+        
+        .no-results {
+            text-align: center;
+            padding: 60px 20px;
+            color: white;
+        }
+        
+        .no-results h2 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+        
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.95);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .lightbox.active {
+            display: flex;
+        }
+        
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            border-radius: 10px;
+        }
+        
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 40px;
+            cursor: pointer;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: background 0.3s;
+        }
+        
+        .lightbox-close:hover {
+            background: rgba(255,255,255,0.2);
+        }
+        
+        /* 价格标签 */
+        .price-tag {
+            display: inline-block;
+            background: linear-gradient(135deg, #ffd700, #ffed4a);
+            color: #333;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-weight: 700;
+            margin-right: 8px;
+            margin-bottom: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        @media (max-width: 768px) {
+            .circles-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .stats {
+                gap: 15px;
+            }
+            
+            .stat-item {
+                padding: 15px 25px;
+            }
+            
+            .card-header {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎵 超ボーマス62 参展社团信息</h1>
+            <p class="subtitle">THE VOC@LOiD 超 M@STER62 商品信息汇总</p>
+            
+            <div class="stats">
+                <div class="stat-item">
+                    <div class="stat-number" id="totalCircles">0</div>
+                    <div class="stat-label">找到信息的社团</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="totalImages">0</div>
+                    <div class="stat-label">商品图片</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="totalVideos">0</div>
+                    <div class="stat-label">试听视频</div>
+                </div>
+            </div>
+        </header>
+        
+        <div class="filters">
+            <div class="filter-row">
+                <input type="text" id="searchInput" placeholder="搜索社团名、商品、展位...">
+                <select id="dayFilter">
+                    <option value="">全部日期</option>
+                    <option value="4/25">4月25日 (Day 1)</option>
+                    <option value="4/26">4月26日 (Day 2)</option>
+                </select>
+                <select id="sortFilter">
+                    <option value="date">按日期排序</option>
+                    <option value="name">按社团名排序</option>
+                    <option value="booth">按展位排序</option>
+                </select>
+            </div>
+        </div>
+        
+        <div class="circles-grid" id="circlesGrid">
+            <!-- 卡片将通过JS动态生成 -->
+        </div>
+        
+        <div class="no-results" id="noResults" style="display: none;">
+            <h2>😔 未找到匹配的社团</h2>
+            <p>请尝试其他搜索关键词</p>
+        </div>
+    </div>
+    
+    <div class="lightbox" id="lightbox">
+        <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+        <img src="" alt="" id="lightboxImg">
+    </div>
+    
+    <script src="data.js"></script>
+    <script>
+        let circlesData = [];
+        
+        // 从data.js加载数据
+        if (typeof VOMAS62_DATA !== 'undefined') {
+            // 按主体推文日期排序（新到旧）
+            circlesData = VOMAS62_DATA.sort((a, b) => {
+                const dateA = a.mainTweet && a.mainTweet.tweetDate ? new Date(a.mainTweet.tweetDate) : new Date(0);
+                const dateB = b.mainTweet && b.mainTweet.tweetDate ? new Date(b.mainTweet.tweetDate) : new Date(0);
+                return dateB - dateA;
+            });
+            updateStats();
+            renderCircles(circlesData);
+        }
+        
+        function updateStats() {
+            document.getElementById('totalCircles').textContent = circlesData.length;
+            
+            let images = 0, videos = 0;
+            circlesData.forEach(c => {
+                if (c.mainTweet && c.mainTweet.images) {
+                    images += c.mainTweet.images.length;
+                }
+                if (c.previewVideo) {
+                    videos += 1;
+                }
+            });
+            
+            document.getElementById('totalImages').textContent = images;
+            document.getElementById('totalVideos').textContent = videos;
+        }
+        
+        function getAvatarHtml(screenName, circleName, avatarUrl) {
+            const initial = circleName.charAt(0).toUpperCase();
+            
+            if (avatarUrl) {
+                return `<img src="${avatarUrl}" 
+                             alt="${circleName}" 
+                             class="author-avatar"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="author-avatar-placeholder" style="display:none;">${initial}</div>`;
+            }
+            
+            const avatarUrls = [
+                `https://unavatar.io/twitter/${screenName}`,
+                `https://unavatar.io/x/${screenName}`,
+                `https://api.dicebear.com/7.x/initials/svg?seed=${circleName}&backgroundColor=667eea`
+            ];
+            
+            return `<img src="${avatarUrls[0]}" 
+                         alt="${circleName}" 
+                         class="author-avatar"
+                         data-fallback-index="0"
+                         data-fallback-urls='${JSON.stringify(avatarUrls)}'
+                         onerror="handleAvatarError(this, '${initial}')">
+                    <div class="author-avatar-placeholder" style="display:none;">${initial}</div>`;
+        }
+        
+        function handleAvatarError(img, initial) {
+            const urls = JSON.parse(img.dataset.fallbackUrls);
+            let index = parseInt(img.dataset.fallbackIndex);
+            
+            index++;
+            if (index < urls.length) {
+                img.dataset.fallbackIndex = index;
+                img.src = urls[index];
+            } else {
+                img.style.display = 'none';
+                img.nextElementSibling.style.display = 'flex';
+            }
+        }
+        
+        function renderCircles(data) {
+            const grid = document.getElementById('circlesGrid');
+            const noResults = document.getElementById('noResults');
+            
+            if (data.length === 0) {
+                grid.innerHTML = '';
+                noResults.style.display = 'block';
+                return;
+            }
+            
+            noResults.style.display = 'none';
+            
+            grid.innerHTML = data.map(circle => {
+                const mainTweet = circle.mainTweet;
+                const hasMainTweet = mainTweet && mainTweet.tweetId;
+                const hasMoreTweets = circle.hasMoreTweets && circle.allTweets && circle.allTweets.length > 0;
+                
+                return `
+                <div class="circle-card">
+                    <div class="card-header">
+                        <a href="https://twitter.com/${circle.screenName}" target="_blank" style="text-decoration:none;">
+                            ${getAvatarHtml(circle.screenName, circle.circleName, circle.avatarUrl)}
+                        </a>
+                        <div class="author-info">
+                            <a href="https://twitter.com/${circle.screenName}" target="_blank">
+                                <div class="x-display-name" style="font-size: 1.1rem; font-weight: 600; margin-bottom: 2px;">${circle.xDisplayName || circle.circleName}</div>
+                                <div class="author-handle" style="font-size: 0.9rem; opacity: 0.9;">@${circle.screenName}</div>
+                                <div class="circle-name" style="font-size: 0.85rem; opacity: 0.8; margin-top: 2px;">${circle.circleName}</div>
+                            </a>
+                            ${circle.boothDay1 || circle.boothDay2 ? `
+                                <div class="circle-booth">
+                                    📅 4/25: ${circle.boothDay1 || '未出展'} | 4/26: ${circle.boothDay2 || '未出展'}
+                                </div>
+                            ` : ''}
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        ${hasMainTweet ? `
+                            <!-- 主体推文 -->
+                            <div class="main-tweet">
+                                <div class="main-tweet-text" id="tweet-${circle.screenName}">${mainTweet.tweetText}</div>
+                                
+                                ${mainTweet.images && mainTweet.images.length > 0 ? `
+                                    <div class="main-tweet-media">
+                                        ${mainTweet.images.map(img => `
+                                            <div class="media-item ${img.isVideoThumb ? 'video' : ''}" onclick="openLightbox('${img.url}')">
+                                                <img src="${img.url}" alt="商品图片" loading="lazy">
+                                            </div>
+                                        `).join('')}
+                                    </div>
+                                ` : ''}
+                            </div>
+                            
+                            <!-- 翻译区域 -->
+                            <div class="translation-box" id="translation-${circle.screenName}"></div>
+                            <button onclick="translateTweet('${circle.screenName}', '${encodeURIComponent(mainTweet.tweetText)}')" class="translate-btn">
+                                🌐 翻译推文
+                            </button>
+                            
+                            <!-- 试听视频（单独提取） -->
+                            ${circle.previewVideo ? (() => {
+                                const pv = circle.previewVideo;
+                                // 判断是否是直链 mp4
+                                const isMp4 = pv.url && (pv.url.includes('video.twimg.com') || pv.url.endsWith('.mp4'));
+                                const thumbUrl = pv.thumbnailUrl || '';
+                                const circleName = circle.circleName || circle.xDisplayName || '';
+                                
+                                if (isMp4) {
+                                    // 直链 mp4：用内嵌 video 标签播放，而不是跳链接
+                                    // 同时提供跳转到原推文的按钮（如果有 tweetId）
+                                    const tweetLink = pv.tweetId ? `https://x.com/${circle.screenName}/status/${pv.tweetId}` : null;
+                                    return `
+                                    <div class="preview-video-section" style="cursor:default;">
+                                        ${thumbUrl ? `<div class="preview-video-bg" style="background-image:url('${thumbUrl}')"></div>` : '<div class="preview-video-bg" style="background:linear-gradient(135deg,#1a1a2e,#16213e)"></div>'}
+                                        <div class="preview-video-inner" style="flex-direction:column; align-items:flex-start; gap:10px; padding:14px 18px;">
+                                            <div class="preview-video-label" style="color:rgba(255,255,255,0.7);">🎵 XFD · 试听视频</div>
+                                            <video controls style="width:100%;border-radius:8px;max-height:220px;background:#000;" 
+                                                   poster="${thumbUrl}" preload="none">
+                                                <source src="${pv.url}" type="video/mp4">
+                                            </video>
+                                            ${tweetLink ? `<a href="${tweetLink}" target="_blank" style="color:rgba(255,255,255,0.8);font-size:12px;text-decoration:none;opacity:0.8;">↗ 查看原推文</a>` : ''}
+                                        </div>
+                                    </div>`;
+                                } else {
+                                    // 外链（YouTube/niconico 等）：保持原来的跳链接样式
+                                    return `
+                                    <a href="${pv.url}" target="_blank" class="preview-video-link">
+                                        <div class="preview-video-section">
+                                            ${thumbUrl ? `<div class="preview-video-bg" style="background-image:url('${thumbUrl}')"></div>` : '<div class="preview-video-bg" style="background:linear-gradient(135deg,#1a1a2e,#16213e)"></div>'}
+                                            <div class="preview-video-inner">
+                                                <div class="preview-video-play">▶</div>
+                                                <div class="preview-video-info">
+                                                    <div class="preview-video-label">🎵 XFD · 试听视频</div>
+                                                    <div class="preview-video-title">${circleName}</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>`;
+                                }
+                            })() : ''}
+                            
+                            <!-- 更多推文（可折叠） -->
+                            ${hasMoreTweets ? `
+                                <div class="more-tweets-section">
+                                    <button class="more-tweets-toggle" onclick="toggleMoreTweets('${circle.screenName}')">
+                                        <span>📋 查看更多推文 (${circle.allTweets.length}条)</span>
+                                        <span class="arrow">▼</span>
+                                    </button>
+                                    <div class="more-tweets-content" id="more-tweets-${circle.screenName}">
+                                        ${circle.allTweets.map(tweet => `
+                                            <div class="additional-tweet">
+                                                <div class="additional-tweet-date">${tweet.tweetDate}</div>
+                                                <div class="additional-tweet-text">${tweet.tweetText}</div>
+                                                ${tweet.images && tweet.images.length > 0 ? `
+                                                    <div class="additional-tweet-media">
+                                                        ${tweet.images.map(img => `
+                                                            <img src="${img.url}" alt="图片" onclick="openLightbox('${img.url}')">
+                                                        `).join('')}
+                                                    </div>
+                                                ` : ''}
+                                                <div class="translation-box" id="translation-${tweet.tweetId}" style="display:none;"></div>
+                                                <div style="display: flex; gap: 10px; margin-top: 8px; flex-wrap: wrap;">
+                                                    <button onclick="translateById('${tweet.tweetId}', '${encodeURIComponent(tweet.tweetText)}')" class="translate-btn">
+                                                        🌐 翻译
+                                                    </button>
+                                                    ${tweet.tweetId && /^\d+$/.test(tweet.tweetId) ? `
+                                                        <a href="https://x.com/${circle.screenName}/status/${tweet.tweetId}" target="_blank" class="x-link" style="padding: 6px 12px; font-size: 0.85rem;">
+                                                            查看原推文 →
+                                                        </a>
+                                                    ` : ''}
+                                                </div>
+                                            </div>
+                                        `).join('')}
+                                    </div>
+                                </div>
+                            ` : ''}
+                        ` : `
+                            <div style="text-align: center; padding: 30px; color: #999;">
+                                <p>暂无VM62相关推文</p>
+                            </div>
+                        `}
+                    </div>
+                    ${hasMainTweet ? `
+                        <div class="card-footer">
+                            <span class="tweet-date">发布于 ${mainTweet.tweetDate}</span>
+                            ${mainTweet.tweetId && /^\d+$/.test(mainTweet.tweetId) ? `
+                                <a href="https://x.com/${circle.screenName}/status/${mainTweet.tweetId}" target="_blank" class="x-link">
+                                    查看原推文 →
+                                </a>
+                            ` : `
+                                <a href="https://x.com/search?q=from%3A${circle.screenName}%20%E8%B6%85%E3%83%9C%E3%83%BC%E3%83%9E%E3%82%B9&src=typed_query&f=live" target="_blank" class="x-link" style="opacity: 0.8;">
+                                    在X搜索 →
+                                </a>
+                            `}
+                        </div>
+                    ` : ''}
+                </div>
+            `}).join('');
+        }
+        
+        // 切换更多推文显示/隐藏
+        function toggleMoreTweets(screenName) {
+            const content = document.getElementById(`more-tweets-${screenName}`);
+            const toggle = content.previousElementSibling;
+            
+            if (content.classList.contains('expanded')) {
+                content.classList.remove('expanded');
+                toggle.classList.remove('expanded');
+                toggle.querySelector('span:first-child').textContent = toggle.querySelector('span:first-child').textContent.replace('收起', '查看更多推文');
+            } else {
+                content.classList.add('expanded');
+                toggle.classList.add('expanded');
+                toggle.querySelector('span:first-child').textContent = toggle.querySelector('span:first-child').textContent.replace('查看更多推文', '收起');
+            }
+        }
+        
+        // 搜索和筛选
+        document.getElementById('searchInput').addEventListener('input', filterCircles);
+        document.getElementById('dayFilter').addEventListener('change', filterCircles);
+        document.getElementById('sortFilter').addEventListener('change', filterCircles);
+        
+        function filterCircles() {
+            const search = document.getElementById('searchInput').value.toLowerCase();
+            const day = document.getElementById('dayFilter').value;
+            const sort = document.getElementById('sortFilter').value;
+            
+            let filtered = circlesData.filter(c => {
+                const matchSearch = !search || 
+                    c.circleName.toLowerCase().includes(search) ||
+                    (c.mainTweet && c.mainTweet.tweetText && c.mainTweet.tweetText.toLowerCase().includes(search)) ||
+                    (c.boothDay1 && c.boothDay1.toLowerCase().includes(search)) ||
+                    (c.boothDay2 && c.boothDay2.toLowerCase().includes(search));
+                
+                const matchDay = !day || 
+                    (c.mainTweet && c.mainTweet.tweetText && c.mainTweet.tweetText.includes(day));
+                
+                return matchSearch && matchDay;
+            });
+            
+            // 排序
+            filtered.sort((a, b) => {
+                if (sort === 'name') return a.circleName.localeCompare(b.circleName);
+                if (sort === 'booth') {
+                    const boothA = a.boothDay1 || a.boothDay2 || '';
+                    const boothB = b.boothDay1 || b.boothDay2 || '';
+                    return boothA.localeCompare(boothB);
+                }
+                // 按日期排序
+                const dateA = a.mainTweet && a.mainTweet.tweetDate ? new Date(a.mainTweet.tweetDate) : new Date(0);
+                const dateB = b.mainTweet && b.mainTweet.tweetDate ? new Date(b.mainTweet.tweetDate) : new Date(0);
+                return dateB - dateA;
+            });
+            
+            renderCircles(filtered);
+        }
+        
+        // Lightbox
+        function openLightbox(src) {
+            document.getElementById('lightboxImg').src = src;
+            document.getElementById('lightbox').classList.add('active');
+        }
+        
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+        }
+        
+        document.getElementById('lightbox').addEventListener('click', function(e) {
+            if (e.target === this) closeLightbox();
+        });
+        
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeLightbox();
+        });
+        
+        // 翻译推文功能（通用，用id区分）
+        async function translateById(id, encodedText) {
+            const text = decodeURIComponent(encodedText);
+            const translationDiv = document.getElementById(`translation-${id}`);
+            const btn = event.currentTarget;
+
+            if (translationDiv.dataset.translated === 'true') {
+                if (translationDiv.style.display === 'none') {
+                    translationDiv.style.display = 'block';
+                    btn.textContent = '🌐 隐藏翻译';
+                } else {
+                    translationDiv.style.display = 'none';
+                    btn.textContent = '🌐 翻译';
+                }
+                return;
+            }
+
+            btn.textContent = '🔄 翻译中...';
+            btn.disabled = true;
+
+            try {
+                const response = await fetch(`https://translate.googleapis.com/translate_a/single?client=gtx&sl=ja&tl=zh-CN&dt=t&q=${encodeURIComponent(text)}`);
+                const data = await response.json();
+
+                let translatedText = '';
+                if (data && data[0]) {
+                    translatedText = data[0].map(item => item[0]).join('');
+                }
+
+                if (translatedText) {
+                    let formattedText = translatedText
+                        .replace(/(@[^\s]+)/g, '\n$1')
+                        .replace(/(#[^\s]+)/g, '\n$1')
+                        .replace(/\n+/g, '\n')
+                        .trim();
+
+                    translationDiv.innerHTML = `
+                        <div class="translation-header">🌐 中文翻译</div>
+                        <div class="translation-content">${formattedText.replace(/\n/g, '<br>')}</div>
+                    `;
+                    translationDiv.style.display = 'block';
+                    translationDiv.dataset.translated = 'true';
+                    btn.textContent = '🌐 隐藏翻译';
+                } else {
+                    translationDiv.innerHTML = '<span style="color: #e74c3c;">翻译失败，请重试</span>';
+                    translationDiv.style.display = 'block';
+                    btn.textContent = '🌐 翻译';
+                }
+            } catch (error) {
+                console.error('翻译错误:', error);
+                translationDiv.innerHTML = '<span style="color: #e74c3c;">翻译服务暂时不可用</span>';
+                translationDiv.style.display = 'block';
+                btn.textContent = '🌐 翻译';
+            }
+
+            btn.disabled = false;
+        }
+
+        // 翻译推文功能
+        async function translateTweet(screenName, encodedText) {
+            const text = decodeURIComponent(encodedText);
+            const translationDiv = document.getElementById(`translation-${screenName}`);
+            const btn = event.currentTarget;
+            
+            if (translationDiv.dataset.translated === 'true') {
+                if (translationDiv.style.display === 'none') {
+                    translationDiv.style.display = 'block';
+                    btn.textContent = '🌐 隐藏翻译';
+                } else {
+                    translationDiv.style.display = 'none';
+                    btn.textContent = '🌐 翻译推文';
+                }
+                return;
+            }
+            
+            btn.textContent = '🔄 翻译中...';
+            btn.disabled = true;
+            
+            try {
+                const response = await fetch(`https://translate.googleapis.com/translate_a/single?client=gtx&sl=ja&tl=zh-CN&dt=t&q=${encodeURIComponent(text)}`);
+                const data = await response.json();
+                
+                let translatedText = '';
+                if (data && data[0]) {
+                    translatedText = data[0].map(item => item[0]).join('');
+                }
+                
+                if (translatedText) {
+                    let formattedText = translatedText
+                        .replace(/(第\s*\d+\s*EP)/g, '\n$1')
+                        .replace(/(\d{4}\s*日元)/g, '$1\n')
+                        .replace(/(@[^\s]+)/g, '\n$1')
+                        .replace(/(#[^\s]+)/g, '\n$1')
+                        .replace(/\n+/g, '\n')
+                        .trim();
+                    
+                    translationDiv.innerHTML = `
+                        <div class="translation-header">🌐 中文翻译</div>
+                        <div class="translation-content">${formattedText.replace(/\n/g, '<br>')}</div>
+                    `;
+                    translationDiv.style.display = 'block';
+                    translationDiv.dataset.translated = 'true';
+                    btn.textContent = '🌐 隐藏翻译';
+                } else {
+                    translationDiv.innerHTML = '<span style="color: #e74c3c;">翻译失败，请重试</span>';
+                    translationDiv.style.display = 'block';
+                    btn.textContent = '🌐 翻译推文';
+                }
+            } catch (error) {
+                console.error('翻译错误:', error);
+                translationDiv.innerHTML = '<span style="color: #e74c3c;">翻译服务暂时不可用</span>';
+                translationDiv.style.display = 'block';
+                btn.textContent = '🌐 翻译推文';
+            }
+            
+            btn.disabled = false;
+        }
+    </script>
+</body>
+</html>
